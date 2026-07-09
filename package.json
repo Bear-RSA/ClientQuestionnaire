@@ -4,7 +4,7 @@
   "description": "Mirai Stack Discovery System — Serverless API",
   "private": true,
   "engines": {
-    "node": "18.x"
+    "node": "24.x"
   },
   "dependencies": {
     "resend": "^3.0.0"
