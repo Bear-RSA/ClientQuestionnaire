@@ -91,16 +91,18 @@ module.exports = async function handler(req, res) {
     `;
 
     // 4. Send Emails in Parallel via Resend
+    // NOTE: 'to' fields are currently hardcoded to 'support@miraistack.co.za' for testing.
+    // RESTORE to 'client.email' (for client-facing) and 'team@miraistack.co.za' (for internal) before production launch.
     await Promise.all([
       resend.emails.send({
         from: "discovery@miraistack.co.za",
-        to: client.email,
+        to: "support@miraistack.co.za", // Restore to: client.email
         subject: `Your Mirai Stack Discovery Results — ${referenceId}`,
         html: clientHtml,
       }),
       resend.emails.send({
         from: "system@miraistack.co.za",
-        to: "team@miraistack.co.za",
+        to: "support@miraistack.co.za", // Restore to: "team@miraistack.co.za"
         subject: `🔔 New Submission: ${client.businessName || client.contactName} [${referenceId}]`,
         html: internalHtml,
       }),
