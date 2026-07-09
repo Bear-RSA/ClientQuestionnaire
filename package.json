@@ -1,0 +1,12 @@
+{
+  "name": "mirai-stack-discovery",
+  "version": "1.0.0",
+  "description": "Mirai Stack Discovery System — Serverless API",
+  "private": true,
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {
+    "resend": "^3.0.0"
+  }
+}

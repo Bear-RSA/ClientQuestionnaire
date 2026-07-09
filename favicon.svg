@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <linearGradient id="mirai-grad" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#C6A15B" />
+      <stop offset="100%" stop-color="#6E7CF6" />
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="10" fill="url(#mirai-grad)" />
+  <path d="M9 14.5L16 10L23 14.5V17L16 12.5L9 17V14.5Z" fill="white" />
+  <path d="M9 20L16 15.5L23 20V22.5L16 18L9 22.5V20Z" fill="white" />
+</svg>
