@@ -270,7 +270,7 @@ async function showResults(){
     </div>
 
     <div class="res-actions">
-      <button class="btn btn-gold" style="flex:1" onclick="alert('This would open scheduling.')">Schedule Consultation</button>
+      <button class="btn btn-gold" style="flex:1" onclick="window.location.href='mailto:support@miraistack.co.za?subject=Consultation Request'">Schedule Consultation</button>
       <button class="btn btn-ghost" style="flex:1" disabled>Results Emailed</button>
     </div>
 
