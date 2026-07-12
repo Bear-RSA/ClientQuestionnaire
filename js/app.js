@@ -270,7 +270,7 @@ async function showResults(){
     </div>
 
     <div class="res-actions">
-      <button class="btn btn-gold" style="flex:1" onclick="window.location.href='mailto:support@miraistack.co.za?subject=Consultation Request'">Schedule Consultation</button>
+      <button id="consult-btn" class="btn btn-gold" style="flex:1" onclick="requestConsultation()">Schedule Consultation</button>
       <button class="btn btn-ghost" style="flex:1" disabled>Results Emailed</button>
     </div>
 
@@ -286,6 +286,43 @@ function tierExplain(tier){
     Enterprise:'your project involves mission-critical systems, complex integrations, and dedicated delivery resourcing.',
   };
   return map[tier.name];
+}
+
+async function requestConsultation() {
+  const btn = document.getElementById('consult-btn');
+  if (btn) {
+    btn.innerText = 'Requesting...';
+    btn.disabled = true;
+  }
+  
+  try {
+    const payload = {
+      email: state.answers.email,
+      businessName: state.answers.businessName
+    };
+    
+    const response = await fetch('/api/consultation', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    
+    if (response.ok) {
+      if (btn) btn.innerText = 'Request Sent ✓';
+    } else {
+      console.error('API Error');
+      if (btn) {
+        btn.innerText = 'Schedule Consultation';
+        btn.disabled = false;
+      }
+    }
+  } catch (err) {
+    console.error('Fetch Error:', err);
+    if (btn) {
+      btn.innerText = 'Schedule Consultation';
+      btn.disabled = false;
+    }
+  }
 }
 
 /* ============================================================
