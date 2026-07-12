@@ -47,7 +47,7 @@ module.exports = async function handler(req, res) {
     `;
 
     await resend.emails.send({
-      from: "system@miraistack.co.za",
+      from: "Mirai Stack Discovery <system@mail.miraistack.co.za>",
       // TODO: Change this to forms@miraistack.co.za once the alias is created
       to: "support@miraistack.co.za",
       subject: `Consultation Request: ${businessName || email}`,
