@@ -162,3 +162,32 @@ textarea.field{resize:vertical;min-height:110px;line-height:1.5;}
 .upload-box{border:1px dashed var(--line-hi);border-radius:var(--radius-sm);padding:22px;text-align:center;
   color:var(--text-faint);font-size:13px;margin-top:10px;cursor:pointer;transition:all .2s;}
 .upload-box:hover{border-color:var(--gold);color:var(--text-dim);}
+
+/* ===== FOOTER & PRIVACY ===== */
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 32px;
+  font-family: 'Inter';
+  font-size: 13px;
+  color: var(--text-faint);
+  margin-top: auto;
+}
+.footer-link {
+  color: var(--text-faint);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-link:hover {
+  color: var(--text-dim);
+}
+.privacy-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 32px 100px;
+}
+.privacy-section {
+  margin-bottom: 24px;
+}
