@@ -7,6 +7,7 @@
     "node": "24.x"
   },
   "dependencies": {
+    "node-vibrant": "^3.1.6",
     "resend": "^3.0.0"
   }
 }

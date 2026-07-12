@@ -46,8 +46,7 @@ h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;}
 .topbar{display:flex;align-items:center;justify-content:space-between;
   padding:26px 48px;max-width:1200px;margin:0 auto;}
 .logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk';font-weight:600;font-size:16px;letter-spacing:0.02em;cursor:pointer;}
-.logo-mark{width:10px;height:10px;border-radius:3px;background:linear-gradient(135deg,var(--gold),var(--iris));}
-.logo-sub{color:var(--text-faint);font-size:12px;font-weight:400;margin-left:6px;font-family:'Inter';}
+.logo-img { max-height: 40px; width: auto; object-fit: contain; }
 
 /* ===== LANDING ===== */
 .hero{max-width:900px;margin:70px auto 60px;padding:0 48px;text-align:center;}
