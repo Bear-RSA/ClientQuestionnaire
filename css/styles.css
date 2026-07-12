@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 :root{
-  --bg:#030c0b;
-  --surface:#071615;
-  --surface-hi:#0c2220;
+  --bg:#0b101e;
+  --surface:#151b2b;
+  --surface-hi:#1e2538;
   --line:rgba(255,255,255,0.08);
   --line-hi:rgba(255,255,255,0.16);
-  --text:#F2F1ED;
-  --text-dim:#8B8F9B;
-  --text-faint:#565A66;
-  --gold:#6cd4dc;
-  --gold-soft:rgba(108,212,220,0.14);
-  --iris:#57a4a5;
-  --iris-soft:rgba(87,164,165,0.14);
+  --text:#FFFFFF;
+  --text-dim:#9ca3af;
+  --text-faint:#6b7280;
+  --gold:#5ce1e6;
+  --gold-soft:rgba(92, 225, 230, 0.14);
+  --iris:#3b82f6;
+  --iris-soft:rgba(59, 130, 246, 0.14);
   --radius:18px;
   --radius-sm:12px;
 }
