@@ -270,7 +270,7 @@ async function showResults(){
     </div>
 
     <div class="res-actions">
-      <button id="consult-btn" class="btn btn-gold" style="flex:1" onclick="requestConsultation()">Schedule Consultation</button>
+      <button id="consult-btn" class="btn btn-gold" style="flex:1" onclick="openBookingModal()">Schedule Consultation</button>
       <button class="btn btn-ghost" style="flex:1" disabled>Results Emailed</button>
     </div>
 
@@ -286,6 +286,16 @@ function tierExplain(tier){
     Enterprise:'your project involves mission-critical systems, complex integrations, and dedicated delivery resourcing.',
   };
   return map[tier.name];
+}
+
+function openBookingModal() {
+  const modal = document.getElementById('booking-modal');
+  if (modal) modal.classList.add('active');
+}
+
+function closeBookingModal() {
+  const modal = document.getElementById('booking-modal');
+  if (modal) modal.classList.remove('active');
 }
 
 async function requestConsultation() {

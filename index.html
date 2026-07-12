@@ -61,6 +61,70 @@
   </footer>
 </div>
 
+  <style>
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 32px;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      transform: translateY(10px);
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+    .modal-overlay.active .modal-box {
+      transform: translateY(0);
+    }
+    .modal-box h2 {
+      color: var(--text);
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 24px;
+    }
+    .modal-box p {
+      color: var(--text);
+      opacity: 0.7;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+    }
+  </style>
+
+  <!-- ================= BOOKING MODAL ================= -->
+  <div class="modal-overlay" id="booking-modal">
+    <div class="modal-box">
+      <h2>Ready to schedule?</h2>
+      <p>You'll be redirected to Calendly to pick a time that works for you. Our team will come prepared with your customized project brief.</p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" style="flex:1" onclick="closeBookingModal()">Cancel</button>
+        <button class="btn btn-gold" style="flex:1" onclick="window.open('https://calendly.com/your-booking-link', '_blank'); closeBookingModal();">Continue to Booking</button>
+      </div>
+    </div>
+  </div>
+
 <script src="js/config.js"></script>
 <script src="js/app.js"></script>
 </body>
