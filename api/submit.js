@@ -41,21 +41,6 @@ module.exports = async function handler(req, res) {
       .join("");
 
     // 3. Build Email Templates
-    const clientHtml = `
-      <div style="background:#0A0A0C; padding:40px; font-family:sans-serif; color:#fff;">
-        <h2 style="color:#C6A15B;">Mirai Stack</h2>
-        <h1>Your Project Discovery Results</h1>
-        <p>Hi ${client.contactName}, thank you for completing your project discovery.</p>
-        <div style="background:#161618; border:1px solid #333; padding:24px; border-radius:12px;">
-          <p style="color:#C6A15B; font-size:11px; letter-spacing:2px; margin:0;">RECOMMENDED PLAN</p>
-          <h2 style="margin:8px 0;">${scoring.tierDetails?.name || 'N/A'}</h2>
-          <p style="color:#888;">${scoring.tierDetails?.desc || ''}</p>
-        </div>
-        <p>Our team is reviewing your submission and will reach out shortly to schedule your ${scoring.tierDetails?.consult || 'consultation'}.</p>
-        <a href="https://calendly.com/miraistack" style="display:inline-block; background:#C6A15B; color:#000; padding:12px 24px; text-decoration:none; border-radius:6px; font-weight:bold; margin-top:20px;">Schedule Consultation</a>
-      </div>
-    `;
-
     const internalHtml = `
       <div style="background:#0A0A0C; padding:40px; font-family:sans-serif; color:#fff;">
         <h2 style="color:#C6A15B;">New Submission: ${client.businessName || client.contactName}</h2>
@@ -90,23 +75,15 @@ module.exports = async function handler(req, res) {
       </div>
     `;
 
-    // 4. Send Emails in Parallel via Resend
-    // NOTE: 'to' fields are currently hardcoded to 'support@miraistack.co.za' for testing.
-    // RESTORE to 'client.email' (for client-facing) and 'team@miraistack.co.za' (for internal) before production launch.
-    await Promise.all([
-      resend.emails.send({
-        from: "Mirai Stack Discovery <system@mail.miraistack.co.za>",
-        to: "support@miraistack.co.za", // Restore to: client.email
-        subject: `Your Mirai Stack Discovery Results — ${referenceId}`,
-        html: clientHtml,
-      }),
-      resend.emails.send({
-        from: "Mirai Stack Discovery <system@mail.miraistack.co.za>",
-        to: "support@miraistack.co.za", // Restore to: "team@miraistack.co.za"
-        subject: `🔔 New Submission: ${client.businessName || client.contactName} [${referenceId}]`,
-        html: internalHtml,
-      }),
-    ]);
+    // 4. Send Internal Email via Resend
+    // NOTE: 'to' field is currently hardcoded to 'support@miraistack.co.za' for testing.
+    // RESTORE to 'team@miraistack.co.za' before production launch.
+    await resend.emails.send({
+      from: "Mirai Stack Discovery <system@mail.miraistack.co.za>",
+      to: "support@miraistack.co.za", // Restore to: "team@miraistack.co.za"
+      subject: `🔔 New Submission: ${client.businessName || client.contactName} [${referenceId}]`,
+      html: internalHtml,
+    });
 
     // 5. Return Success
     return res.status(200).json({ success: true, referenceId, status: "completed" });
