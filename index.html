@@ -111,6 +111,48 @@
       display: flex;
       gap: 12px;
     }
+
+    /* Enhanced Mobile Responsiveness */
+    @media (max-width: 900px) {
+      .cards { grid-template-columns: repeat(2, 1fr); gap: 16px; padding-bottom: 60px; }
+      .hero { margin-top: 50px; margin-bottom: 40px; }
+      .hero h1 { font-size: 38px; }
+      .res-wrap, .q-wrap, .ent-wrap { padding-top: 40px; padding-bottom: 60px; }
+    }
+
+    @media (max-width: 520px) {
+      /* Hero & Topbar */
+      .topbar { padding: 16px; }
+      .hero { padding: 0 16px; margin-top: 30px; margin-bottom: 30px; }
+      .hero h1 { font-size: 28px; line-height: 1.15; margin-bottom: 16px; }
+      .hero p { font-size: 15px; }
+
+      /* Cards & Grids */
+      .cards { grid-template-columns: 1fr; padding: 0 16px 60px; gap: 12px; }
+      .opt-grid, .ent-grid { grid-template-columns: 1fr; gap: 12px; }
+      
+      /* Tap Targets (Minimum 44px) */
+      .btn { padding: 14px 20px; min-height: 48px; font-size: 15px; width: 100%; display: flex; align-items: center; justify-content: center; }
+      .opt { padding: 14px 16px; min-height: 48px; }
+      .field { padding: 14px 16px; min-height: 48px; }
+      
+      /* Spacing & Padding */
+      .q-wrap { padding: 0 16px 40px; }
+      .progress-shell { padding: 16px 16px 0; }
+      .res-wrap { padding: 40px 16px 60px; }
+      .ent-wrap { padding: 40px 16px 60px; }
+      .tier-card { padding: 24px 20px; }
+      .nav-row { flex-direction: column; gap: 12px; margin-top: 30px; }
+      
+      /* Results specific overrides */
+      .res-actions { flex-direction: column; width: 100%; gap: 12px; }
+      .res-wrap h1 { font-size: 26px; }
+
+      /* Modals */
+      .modal-box { padding: 24px 20px; width: calc(100% - 32px); margin: 0 16px; }
+      .modal-actions { flex-direction: column; gap: 12px; }
+      .modal-actions button { width: 100%; margin: 0; }
+    }
   </style>
 
   <!-- ================= BOOKING MODAL ================= -->
