@@ -270,7 +270,7 @@ async function showResults(){
     </div>
 
     <div class="res-actions">
-      <button id="consult-btn" class="btn btn-gold" style="flex:1" onclick="openBookingModal()">Schedule Consultation</button>
+      <button id="consult-btn" class="btn btn-gold" style="flex:1" onclick="openAckModal()">Schedule Consultation</button>
       <button class="btn btn-ghost" style="flex:1" disabled>Results Emailed</button>
     </div>
 
@@ -288,13 +288,13 @@ function tierExplain(tier){
   return map[tier.name];
 }
 
-function openBookingModal() {
-  const modal = document.getElementById('booking-modal');
+function openAckModal() {
+  const modal = document.getElementById('ack-modal');
   if (modal) modal.classList.add('active');
 }
 
-function closeBookingModal() {
-  const modal = document.getElementById('booking-modal');
+function closeAckModal() {
+  const modal = document.getElementById('ack-modal');
   if (modal) modal.classList.remove('active');
 }
 
