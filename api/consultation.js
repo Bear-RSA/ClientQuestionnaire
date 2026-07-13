@@ -28,30 +28,18 @@ module.exports = async function handler(req, res) {
   try {
     const payload = req.body;
     
-    if (!payload || !payload.email) {
-      return res.status(400).json({ success: false, error: "Missing email" });
+    if (!payload || !payload.email || !payload.name) {
+      return res.status(400).json({ success: false, error: "Missing required fields" });
     }
 
-    const { email, businessName } = payload;
-
-    const html = `
-      <div style="background:#0A0A0C; padding:40px; font-family:sans-serif; color:#fff;">
-        <h2 style="color:#C6A15B;">New Consultation Request</h2>
-        <div style="background:#161618; padding:20px; border-radius:8px; margin:20px 0; border: 1px solid #333;">
-          <ul style="color:#ddd; line-height:1.6; list-style:none; padding:0;">
-            <li style="margin-bottom:10px;"><strong>Client Name/Business:</strong> ${businessName || 'Not provided'}</li>
-            <li><strong>Email:</strong> <a href="mailto:${email}" style="color:#C6A15B; text-decoration:none;">${email}</a></li>
-          </ul>
-        </div>
-      </div>
-    `;
+    const { name, email } = payload;
+    const textBody = `${name} (${email}) would like to set a consultation meeting. Please contact them on this email.`;
 
     await resend.emails.send({
-      from: "Mirai Stack Discovery <system@mail.miraistack.co.za>",
-      // TODO: Change this to forms@miraistack.co.za once the alias is created
+      from: "system@mail.miraistack.co.za",
       to: "support@miraistack.co.za",
-      subject: `Consultation Request: ${businessName || email}`,
-      html: html,
+      subject: `Consultation Request: ${name}`,
+      text: textBody,
     });
 
     return res.status(200).json({ success: true, status: "completed" });

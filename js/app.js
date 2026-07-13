@@ -269,9 +269,8 @@ async function showResults(){
       </div>
     </div>
 
-    <div class="res-actions">
-      <button id="consult-btn" class="btn btn-gold" style="flex:1" onclick="openAckModal()">Schedule Consultation</button>
-      <button class="btn btn-ghost" style="flex:1" disabled>Results Emailed</button>
+    <div class="res-actions" style="justify-content: center;">
+      <button id="consult-btn" class="btn btn-gold" onclick="requestConsultation()">Schedule Consultation</button>
     </div>
 
     <div class="ref-tag">Reference ${ref} · Submitted ${new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</div>
@@ -307,8 +306,8 @@ async function requestConsultation() {
   
   try {
     const payload = {
-      email: state.answers.email,
-      businessName: state.answers.businessName
+      name: state.answers.contactName || state.answers.businessName,
+      email: state.answers.email
     };
     
     const response = await fetch('/api/consultation', {
